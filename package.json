@@ -1,0 +1,41 @@
+{
+  "dependencies": {
+    "react": "^18.2.0",
+    "styled-components": "^6.0.0-rc.3"
+  },
+  "name": "styled-img-slider",
+  "version": "1.0.0",
+  "description": "React component image slider styled with styled-components",
+  "main": "/dist/index.js",
+  "scripts": {
+    "test": "jest --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomcoso/img-slider-react.git"
+  },
+  "keywords": [
+    "react",
+    "styled-components",
+    "typed",
+    "typescript",
+    "minimalistic"
+  ],
+  "author": "tomcoso",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomcoso/img-slider-react/issues"
+  },
+  "homepage": "https://github.com/tomcoso/img-slider-react#readme",
+  "devDependencies": {
+    "@jest/globals": "^29.5.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/jest": "^29.5.2",
+    "@types/react": "^18.2.12",
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0",
+    "ts-jest": "^29.1.0"
+  }
+}
