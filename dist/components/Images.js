@@ -12,7 +12,7 @@ const Panel = styled_components_1.default.div `
   background-position: center;
 `;
 const MainPanel = (0, styled_components_1.default)(Panel) `
-background-image: url(${(p) => p.image})
+  background-image: url(${(p) => p.image});
   transition-property: background-image;
   transition-delay: 500ms;
   z-index: 0;

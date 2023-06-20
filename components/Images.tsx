@@ -11,7 +11,7 @@ const Panel = styled.div`
 `;
 
 const MainPanel = styled(Panel)<{ image: string }>`
-background-image: url(${(p) => p.image})
+  background-image: url(${(p) => p.image});
   transition-property: background-image;
   transition-delay: 500ms;
   z-index: 0;
