@@ -52,9 +52,9 @@ const ImgWrap = styled_components_1.default.div `
 `;
 const Images = ({ imageArray, currentIndex, setIndex, anim, prevRef, nextRef, timer, }) => {
     (0, react_1.useEffect)(() => {
-        timer.set(slideForward);
-    }, []);
-    const slideForward = () => {
+        timer.set(slideForwards);
+    }, [currentIndex]);
+    const slideForwards = () => {
         const length = imageArray.length;
         if (currentIndex + 1 === length) {
             setIndex(0);
@@ -64,7 +64,7 @@ const Images = ({ imageArray, currentIndex, setIndex, anim, prevRef, nextRef, ti
         }
         anim("forwards");
         console.log(currentIndex);
-        timer.reset();
+        timer.clear();
     };
     const slideBackwards = () => {
         const maxIndex = imageArray.length - 1;
@@ -75,8 +75,8 @@ const Images = ({ imageArray, currentIndex, setIndex, anim, prevRef, nextRef, ti
             setIndex((x) => x - 1);
         }
         anim("backwards");
-        timer.reset();
+        timer.clear();
     };
-    return ((0, jsx_runtime_1.jsxs)(ImgWrap, Object.assign({ "data-testid": "images" }, { children: [(0, jsx_runtime_1.jsx)(SliderPanel, { "data-testid": "prev-slide", className: "prev", ref: prevRef }), (0, jsx_runtime_1.jsxs)(MainPanel, Object.assign({ role: "img", image: imageArray[currentIndex], className: "main" }, { children: [(0, jsx_runtime_1.jsx)(SlideBtn, { side: "left", onClick: slideBackwards }), (0, jsx_runtime_1.jsx)(SlideBtn, { side: "right", onClick: slideForward })] })), (0, jsx_runtime_1.jsx)(SliderPanel, { "data-testid": "next-slide", className: "next", ref: nextRef })] })));
+    return ((0, jsx_runtime_1.jsxs)(ImgWrap, Object.assign({ "data-testid": "images" }, { children: [(0, jsx_runtime_1.jsx)(SliderPanel, { "data-testid": "prev-slide", className: "prev", ref: prevRef }), (0, jsx_runtime_1.jsxs)(MainPanel, Object.assign({ role: "img", image: imageArray[currentIndex], className: "main" }, { children: [(0, jsx_runtime_1.jsx)(SlideBtn, { side: "left", onClick: slideBackwards }), (0, jsx_runtime_1.jsx)(SlideBtn, { side: "right", onClick: slideForwards })] })), (0, jsx_runtime_1.jsx)(SliderPanel, { "data-testid": "next-slide", className: "next", ref: nextRef })] })));
 };
 exports.default = Images;

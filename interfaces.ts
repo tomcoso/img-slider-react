@@ -11,10 +11,9 @@ export type animFn = (
 ) => void;
 
 export interface TimerI {
-  callback: undefined | (() => void);
   time: number;
   current: NodeJS.Timeout | null;
-  reset: Function;
+  clear: Function;
   set: (callback: () => void) => void;
 }
 

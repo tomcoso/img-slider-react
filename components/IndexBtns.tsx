@@ -42,7 +42,7 @@ const IndexBtns = ({
     } else if (newIndex < currentIndex) {
       anim("backwards", newIndex);
     }
-    timer.reset();
+    timer.clear();
   };
   return (
     <Wrap data-testid="indexes">

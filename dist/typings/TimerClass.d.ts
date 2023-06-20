@@ -2,8 +2,7 @@
 export declare class Timer {
     current: NodeJS.Timeout | null;
     time: number;
-    callback: (() => void) | undefined;
     constructor(time?: number);
-    reset(): void;
+    clear(): void;
     set(callback: () => void): void;
 }

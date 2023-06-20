@@ -62,10 +62,10 @@ const Images = ({
   timer,
 }: ImagesProps) => {
   useEffect(() => {
-    timer.set(slideForward);
-  }, []);
+    timer.set(slideForwards);
+  }, [currentIndex]);
 
-  const slideForward = (): void => {
+  const slideForwards = (): void => {
     const length = imageArray.length;
     if (currentIndex + 1 === length) {
       setIndex(0);
@@ -74,7 +74,7 @@ const Images = ({
     }
     anim("forwards");
     console.log(currentIndex);
-    timer.reset();
+    timer.clear();
   };
 
   const slideBackwards = (): void => {
@@ -85,7 +85,7 @@ const Images = ({
       setIndex((x) => x - 1);
     }
     anim("backwards");
-    timer.reset();
+    timer.clear();
   };
 
   return (
@@ -93,7 +93,7 @@ const Images = ({
       <SliderPanel data-testid="prev-slide" className="prev" ref={prevRef} />
       <MainPanel role="img" image={imageArray[currentIndex]} className="main">
         <SlideBtn side="left" onClick={slideBackwards}></SlideBtn>
-        <SlideBtn side="right" onClick={slideForward}></SlideBtn>
+        <SlideBtn side="right" onClick={slideForwards}></SlideBtn>
       </MainPanel>
       <SliderPanel data-testid="next-slide" className="next" ref={nextRef} />
     </ImgWrap>
