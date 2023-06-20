@@ -32,10 +32,10 @@ const IndexBtns = ({ imageArray, currentIndex, setIndex, anim, }) => {
     const handleNewIndex = (newIndex) => {
         setIndex(newIndex);
         if (newIndex > currentIndex) {
-            anim("forwards");
+            anim("forwards", newIndex);
         }
         else if (newIndex < currentIndex) {
-            anim("backwards");
+            anim("backwards", newIndex);
         }
     };
     return ((0, jsx_runtime_1.jsx)(Wrap, Object.assign({ "data-testid": "indexes" }, { children: imageArray.map((x, i) => ((0, jsx_runtime_1.jsx)(Btn, { "data-testid": "index-btn", className: currentIndex === i ? "current" : "", onClick: () => handleNewIndex(i) }, i * 1000 * Math.random()))) })));

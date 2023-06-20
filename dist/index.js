@@ -12,7 +12,7 @@ const Slider = ({ images, options }) => {
     const [currentIndex, setCurrentIndex] = (0, react_1.useState)(0);
     const nextRef = (0, react_1.useRef)(null);
     const prevRef = (0, react_1.useRef)(null);
-    function animate(direction) {
+    const animate = (direction, newIndex) => {
         const forwardsKeyframes = [
             { transform: "translateX(0%)", opacity: 1 },
             { transform: "translateX(-100%)", opacity: 1, offset: 1 },
@@ -27,13 +27,20 @@ const Slider = ({ images, options }) => {
             duration: 500,
             easing: "cubic-bezier(.41, .01, .25, 1)",
         };
-        if (direction === "forwards" && nextRef.current !== undefined) {
+        if (direction === "forwards" && nextRef.current !== null) {
+            nextRef.current.setAttribute("style", `background-image : url(${newIndex
+                ? images[newIndex]
+                : images[currentIndex < images.length - 1 ? currentIndex + 1 : 0]})`);
             nextRef.current.animate(forwardsKeyframes, keyframeOptions);
+            return;
         }
-        else if (direction === "backwards" && prevRef.current !== undefined) {
+        else if (direction === "backwards" && prevRef.current !== null) {
+            prevRef.current.setAttribute("style", `background-image : url(${newIndex
+                ? images[newIndex]
+                : images[currentIndex > 0 ? currentIndex - 1 : images.length - 1]})`);
             prevRef.current.animate(backwardsKeyframes, keyframeOptions);
         }
-    }
+    };
     return ((0, jsx_runtime_1.jsxs)(Wrapper_1.default, { children: [(0, jsx_runtime_1.jsx)(Images_1.default, { imageArray: images, currentIndex: currentIndex, setIndex: setCurrentIndex, anim: animate, nextRef: nextRef, prevRef: prevRef }), (0, jsx_runtime_1.jsx)(IndexBtns_1.default, { imageArray: images, currentIndex: currentIndex, setIndex: setCurrentIndex, anim: animate })] }));
 };
 exports.default = Slider;
