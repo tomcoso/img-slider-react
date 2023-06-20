@@ -34,12 +34,12 @@ const IndexBtns = ({
   setIndex,
   anim,
 }: IndexBtnsProps) => {
-  const handleNewIndex = (newIndex: number) => {
+  const handleNewIndex = (newIndex: number): void => {
     setIndex(newIndex);
     if (newIndex > currentIndex) {
-      anim("forwards");
+      anim("forwards", newIndex);
     } else if (newIndex < currentIndex) {
-      anim("backwards");
+      anim("backwards", newIndex);
     }
   };
   return (

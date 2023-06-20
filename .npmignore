@@ -1,4 +1,6 @@
 _tests_
 node_modules
-src
+components
+index.tsx
+interfaces.tsx
 jest.config.ts

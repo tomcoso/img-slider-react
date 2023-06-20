@@ -3,15 +3,15 @@ import { useEffect, useRef } from "react";
 import { ImagesProps } from "../interfaces";
 import React from "react";
 
-const Panel = styled.div<{ image?: string }>`
+const Panel = styled.div`
   min-width: 100%;
   background-clip: border-box;
   background-size: cover;
   background-position: center;
-  background-image: url(${(p) => p.image});
 `;
 
-const MainPanel = styled(Panel)`
+const MainPanel = styled(Panel)<{ image: string }>`
+background-image: url(${(p) => p.image})
   transition-property: background-image;
   transition-delay: 500ms;
   z-index: 0;
@@ -63,12 +63,12 @@ const Images = ({
   let prevImage: string | undefined;
   let nextImage: string | undefined;
 
-  useEffect(() => {
-    prevImage =
-      imageArray[currentIndex < imageArray.length - 1 ? currentIndex + 1 : 0];
-    nextImage =
-      imageArray[currentIndex > 0 ? currentIndex - 1 : imageArray.length - 1];
-  }, [currentIndex]);
+  // useEffect(() => {
+  //   nextImage =
+  //     imageArray[currentIndex < imageArray.length - 1 ? currentIndex + 1 : 0];
+  //   prevImage =
+  //     imageArray[currentIndex > 0 ? currentIndex - 1 : imageArray.length - 1];
+  // }, [currentIndex]);
 
   const slideForward = (): void => {
     const length = imageArray.length;
@@ -92,22 +92,12 @@ const Images = ({
 
   return (
     <ImgWrap data-testid="images">
-      <SliderPanel
-        data-testid="prev-slide"
-        image={prevImage}
-        className="prev"
-        ref={prevRef}
-      />
+      <SliderPanel data-testid="prev-slide" className="prev" ref={prevRef} />
       <MainPanel role="img" image={imageArray[currentIndex]} className="main">
         <SlideBtn side="left" onClick={slideBackwards}></SlideBtn>
         <SlideBtn side="right" onClick={slideForward}></SlideBtn>
       </MainPanel>
-      <SliderPanel
-        data-testid="next-slide"
-        image={nextImage}
-        className="next"
-        ref={nextRef}
-      />
+      <SliderPanel data-testid="next-slide" className="next" ref={nextRef} />
     </ImgWrap>
   );
 };
