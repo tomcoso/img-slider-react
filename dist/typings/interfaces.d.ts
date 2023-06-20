@@ -1,7 +1,7 @@
 import React, { Dispatch } from "react";
 export interface SliderProps {
     images: string[];
-    options?: Object;
+    timer?: number;
 }
 export type animFn = (direction: "forwards" | "backwards", newIndex?: number) => void;
 export interface ImagesProps {
