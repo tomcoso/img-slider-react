@@ -3,16 +3,12 @@ import Images from "./components/Images";
 import React, { useRef, useState } from "react";
 import IndexBtns from "./components/IndexBtns";
 import { SliderProps, animFn } from "./interfaces";
+import { Timer } from "./TimerClass";
 
-const Slider = ({ images, timer }: SliderProps) => {
+const Slider = ({ images, timerOptions }: SliderProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  let currentTimeout = setTimeout(
-    () => {
-      setCurrentIndex((x) => (x < images.length - 1 ? x + 1 : 0));
-      animate("forwards");
-    },
-    timer ? timer : 5000
-  );
+
+  const timer = new Timer(timerOptions);
 
   const nextRef = useRef<HTMLDivElement>(null);
   const prevRef = useRef<HTMLDivElement>(null);
@@ -21,7 +17,6 @@ const Slider = ({ images, timer }: SliderProps) => {
     direction: "forwards" | "backwards",
     newIndex?: number
   ) => {
-    clearTimeout(currentTimeout);
     const forwardsKeyframes = [
       { transform: "translateX(0%)", opacity: 1 },
       { transform: "translateX(-100%)", opacity: 1, offset: 1 },
@@ -60,13 +55,6 @@ const Slider = ({ images, timer }: SliderProps) => {
       );
       (prevRef.current as Element).animate(backwardsKeyframes, keyframeOptions);
     }
-    currentTimeout = setTimeout(
-      () => {
-        setCurrentIndex((x) => (x < images.length - 1 ? x + 1 : 0));
-        animate("forwards");
-      },
-      timer ? timer : 5000
-    );
   };
 
   return (
@@ -78,12 +66,14 @@ const Slider = ({ images, timer }: SliderProps) => {
         anim={animate}
         nextRef={nextRef}
         prevRef={prevRef}
+        timer={timer}
       ></Images>
       <IndexBtns
         imageArray={images}
         currentIndex={currentIndex}
         setIndex={setCurrentIndex}
         anim={animate}
+        timer={timer}
       ></IndexBtns>
     </Wrapper>
   );

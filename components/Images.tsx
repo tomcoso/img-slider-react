@@ -59,7 +59,12 @@ const Images = ({
   anim,
   prevRef,
   nextRef,
+  timer,
 }: ImagesProps) => {
+  useEffect(() => {
+    timer.set(slideForward);
+  }, []);
+
   const slideForward = (): void => {
     const length = imageArray.length;
     if (currentIndex + 1 === length) {
@@ -68,6 +73,7 @@ const Images = ({
       setIndex((x) => x + 1);
     }
     anim("forwards");
+    timer.reset();
   };
 
   const slideBackwards = (): void => {
@@ -78,6 +84,7 @@ const Images = ({
       setIndex((x) => x - 1);
     }
     anim("backwards");
+    timer.reset();
   };
 
   return (

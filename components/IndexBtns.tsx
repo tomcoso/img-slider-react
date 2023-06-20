@@ -33,6 +33,7 @@ const IndexBtns = ({
   currentIndex,
   setIndex,
   anim,
+  timer,
 }: IndexBtnsProps) => {
   const handleNewIndex = (newIndex: number): void => {
     setIndex(newIndex);
@@ -41,6 +42,7 @@ const IndexBtns = ({
     } else if (newIndex < currentIndex) {
       anim("backwards", newIndex);
     }
+    timer.reset();
   };
   return (
     <Wrap data-testid="indexes">

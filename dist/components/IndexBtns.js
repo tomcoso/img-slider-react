@@ -28,7 +28,7 @@ const Btn = styled_components_1.default.div `
 
   border: 1px solid rgba(255, 255, 255, 0.5);
 `;
-const IndexBtns = ({ imageArray, currentIndex, setIndex, anim, }) => {
+const IndexBtns = ({ imageArray, currentIndex, setIndex, anim, timer, }) => {
     const handleNewIndex = (newIndex) => {
         setIndex(newIndex);
         if (newIndex > currentIndex) {
@@ -37,6 +37,7 @@ const IndexBtns = ({ imageArray, currentIndex, setIndex, anim, }) => {
         else if (newIndex < currentIndex) {
             anim("backwards", newIndex);
         }
+        timer.reset();
     };
     return ((0, jsx_runtime_1.jsx)(Wrap, Object.assign({ "data-testid": "indexes" }, { children: imageArray.map((x, i) => ((0, jsx_runtime_1.jsx)(Btn, { "data-testid": "index-btn", className: currentIndex === i ? "current" : "", onClick: () => handleNewIndex(i) }, i * 1000 * Math.random()))) })));
 };

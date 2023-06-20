@@ -4,3 +4,4 @@ node_modules
 index.tsx
 interfaces.ts
 jest.config.ts
+TimerClass.ts
