@@ -50,30 +50,24 @@ const ImgWrap = styled_components_1.default.div `
   right: 100%;
 `;
 const Images = ({ imageArray, currentIndex, setIndex, anim, prevRef, nextRef, }) => {
-    let prevImage;
-    let nextImage;
-    // useEffect(() => {
-    //   nextImage =
-    //     imageArray[currentIndex < imageArray.length - 1 ? currentIndex + 1 : 0];
-    //   prevImage =
-    //     imageArray[currentIndex > 0 ? currentIndex - 1 : imageArray.length - 1];
-    // }, [currentIndex]);
     const slideForward = () => {
         const length = imageArray.length;
         if (currentIndex + 1 === length) {
             setIndex(0);
-            return;
         }
-        setIndex((x) => x + 1);
+        else {
+            setIndex((x) => x + 1);
+        }
         anim("forwards");
     };
     const slideBackwards = () => {
         const maxIndex = imageArray.length - 1;
         if (currentIndex - 1 < 0) {
             setIndex(maxIndex);
-            return;
         }
-        setIndex((x) => x - 1);
+        else {
+            setIndex((x) => x - 1);
+        }
         anim("backwards");
     };
     return ((0, jsx_runtime_1.jsxs)(ImgWrap, Object.assign({ "data-testid": "images" }, { children: [(0, jsx_runtime_1.jsx)(SliderPanel, { "data-testid": "prev-slide", className: "prev", ref: prevRef }), (0, jsx_runtime_1.jsxs)(MainPanel, Object.assign({ role: "img", image: imageArray[currentIndex], className: "main" }, { children: [(0, jsx_runtime_1.jsx)(SlideBtn, { side: "left", onClick: slideBackwards }), (0, jsx_runtime_1.jsx)(SlideBtn, { side: "right", onClick: slideForward })] })), (0, jsx_runtime_1.jsx)(SliderPanel, { "data-testid": "next-slide", className: "next", ref: nextRef })] })));

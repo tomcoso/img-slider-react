@@ -60,23 +60,13 @@ const Images = ({
   prevRef,
   nextRef,
 }: ImagesProps) => {
-  let prevImage: string | undefined;
-  let nextImage: string | undefined;
-
-  // useEffect(() => {
-  //   nextImage =
-  //     imageArray[currentIndex < imageArray.length - 1 ? currentIndex + 1 : 0];
-  //   prevImage =
-  //     imageArray[currentIndex > 0 ? currentIndex - 1 : imageArray.length - 1];
-  // }, [currentIndex]);
-
   const slideForward = (): void => {
     const length = imageArray.length;
     if (currentIndex + 1 === length) {
       setIndex(0);
-      return;
+    } else {
+      setIndex((x) => x + 1);
     }
-    setIndex((x) => x + 1);
     anim("forwards");
   };
 
@@ -84,9 +74,9 @@ const Images = ({
     const maxIndex = imageArray.length - 1;
     if (currentIndex - 1 < 0) {
       setIndex(maxIndex);
-      return;
+    } else {
+      setIndex((x) => x - 1);
     }
-    setIndex((x) => x - 1);
     anim("backwards");
   };
 
