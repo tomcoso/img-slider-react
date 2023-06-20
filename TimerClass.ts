@@ -8,6 +8,9 @@ export class Timer {
   }
 
   clear() {
+    if (this.current !== null) {
+      clearTimeout(this.current);
+    }
     this.current = null;
   }
 
