@@ -68,22 +68,14 @@ const Images = ({
   const slideForwards = (): void => {
     timer.clear();
     const length = imageArray.length;
-    if (currentIndex + 1 === length) {
-      setIndex(0);
-    } else {
-      setIndex((x) => x + 1);
-    }
+    setIndex((x) => (x + 1 === length ? 0 : x + 1));
     anim("forwards");
   };
 
   const slideBackwards = (): void => {
     timer.clear();
     const maxIndex = imageArray.length - 1;
-    if (currentIndex - 1 < 0) {
-      setIndex(maxIndex);
-    } else {
-      setIndex((x) => x - 1);
-    }
+    setIndex((x) => (x - 1 < 0 ? maxIndex : x - 1));
     anim("backwards");
   };
 
