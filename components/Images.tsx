@@ -21,7 +21,7 @@ const MainPanel = styled(Panel)`
 `;
 
 const SlideBtn = styled.button<{ side?: string }>`
-  opacity: 0.7;
+  background-color: transparent;
   height: 100%;
   width: 40%;
   display: flex;
@@ -32,7 +32,7 @@ const SlideBtn = styled.button<{ side?: string }>`
 
   &:hover,
   &:focus {
-    box-shadow: inset ${(p) => (p.side === "left" ? "-10px" : "10px")} 0px 10px -8px;
+    box-shadow: inset ${(p) => (p.side === "right" ? "-10px" : "10px")} 0px 10px -8px;
     outline: none;
   }
 `;
