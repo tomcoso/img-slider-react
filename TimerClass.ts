@@ -4,7 +4,7 @@ export class Timer {
 
   constructor(time?: number) {
     this.current = null;
-    this.time = time || 5000;
+    this.time = time || 6500;
   }
 
   clear() {

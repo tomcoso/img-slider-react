@@ -4,7 +4,7 @@ exports.Timer = void 0;
 class Timer {
     constructor(time) {
         this.current = null;
-        this.time = time || 5000;
+        this.time = time || 6500;
     }
     clear() {
         if (this.current !== null) {
