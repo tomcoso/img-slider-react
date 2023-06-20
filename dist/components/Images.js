@@ -22,7 +22,7 @@ const MainPanel = (0, styled_components_1.default)(Panel) `
   align-items: flex-end;
 `;
 const SlideBtn = styled_components_1.default.button `
-  opacity: 0.7;
+  background-color: transparent;
   height: 100%;
   width: 40%;
   display: flex;
@@ -33,7 +33,7 @@ const SlideBtn = styled_components_1.default.button `
 
   &:hover,
   &:focus {
-    box-shadow: inset ${(p) => (p.side === "left" ? "-10px" : "10px")} 0px 10px -8px;
+    box-shadow: inset ${(p) => (p.side === "right" ? "-10px" : "10px")} 0px 10px -8px;
     outline: none;
   }
 `;
