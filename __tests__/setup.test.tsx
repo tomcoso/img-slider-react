@@ -4,7 +4,7 @@ import { render } from "@testing-library/react";
 import { screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-import Slider from "../Slider";
+import Slider from "..";
 
 describe("renders correctly", () => {
   beforeEach(() => {

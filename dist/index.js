@@ -1,17 +1,15 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(require("./Slider.js"), exports);
+const jsx_runtime_1 = require("react/jsx-runtime");
+const Wrapper_1 = __importDefault(require("./components/Wrapper"));
+const Images_1 = __importDefault(require("./components/Images"));
+const react_1 = require("react");
+const IndexBtns_1 = __importDefault(require("./components/IndexBtns"));
+const Slider = ({ images, options }) => {
+    const [currentIndex, setCurrentIndex] = (0, react_1.useState)(0);
+    return ((0, jsx_runtime_1.jsxs)(Wrapper_1.default, { children: [(0, jsx_runtime_1.jsx)(Images_1.default, { imageArray: images, currentIndex: currentIndex, setIndex: setCurrentIndex }), (0, jsx_runtime_1.jsx)(IndexBtns_1.default, { imageArray: images, currentIndex: currentIndex, setIndex: setCurrentIndex })] }));
+};
+exports.default = Slider;
