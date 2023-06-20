@@ -7,6 +7,9 @@ class Timer {
         this.time = time || 5000;
     }
     clear() {
+        if (this.current !== null) {
+            clearTimeout(this.current);
+        }
         this.current = null;
     }
     set(callback) {

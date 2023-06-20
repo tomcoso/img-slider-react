@@ -55,6 +55,7 @@ const Images = ({ imageArray, currentIndex, setIndex, anim, prevRef, nextRef, ti
         timer.set(slideForwards);
     }, [currentIndex]);
     const slideForwards = () => {
+        timer.clear();
         const length = imageArray.length;
         if (currentIndex + 1 === length) {
             setIndex(0);
@@ -63,10 +64,9 @@ const Images = ({ imageArray, currentIndex, setIndex, anim, prevRef, nextRef, ti
             setIndex((x) => x + 1);
         }
         anim("forwards");
-        console.log(currentIndex);
-        timer.clear();
     };
     const slideBackwards = () => {
+        timer.clear();
         const maxIndex = imageArray.length - 1;
         if (currentIndex - 1 < 0) {
             setIndex(maxIndex);
@@ -75,7 +75,6 @@ const Images = ({ imageArray, currentIndex, setIndex, anim, prevRef, nextRef, ti
             setIndex((x) => x - 1);
         }
         anim("backwards");
-        timer.clear();
     };
     return ((0, jsx_runtime_1.jsxs)(ImgWrap, Object.assign({ "data-testid": "images" }, { children: [(0, jsx_runtime_1.jsx)(SliderPanel, { "data-testid": "prev-slide", className: "prev", ref: prevRef }), (0, jsx_runtime_1.jsxs)(MainPanel, Object.assign({ role: "img", image: imageArray[currentIndex], className: "main" }, { children: [(0, jsx_runtime_1.jsx)(SlideBtn, { side: "left", onClick: slideBackwards }), (0, jsx_runtime_1.jsx)(SlideBtn, { side: "right", onClick: slideForwards })] })), (0, jsx_runtime_1.jsx)(SliderPanel, { "data-testid": "next-slide", className: "next", ref: nextRef })] })));
 };
