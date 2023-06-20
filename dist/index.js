@@ -28,14 +28,14 @@ const Slider = ({ images, options }) => {
             easing: "cubic-bezier(.41, .01, .25, 1)",
         };
         if (direction === "forwards" && nextRef.current !== null) {
-            nextRef.current.setAttribute("style", `background-image : url(${newIndex
+            nextRef.current.setAttribute("style", `background-image : url(${newIndex !== undefined
                 ? images[newIndex]
                 : images[currentIndex < images.length - 1 ? currentIndex + 1 : 0]})`);
             nextRef.current.animate(forwardsKeyframes, keyframeOptions);
             return;
         }
         else if (direction === "backwards" && prevRef.current !== null) {
-            prevRef.current.setAttribute("style", `background-image : url(${newIndex
+            prevRef.current.setAttribute("style", `background-image : url(${newIndex !== undefined
                 ? images[newIndex]
                 : images[currentIndex > 0 ? currentIndex - 1 : images.length - 1]})`);
             prevRef.current.animate(backwardsKeyframes, keyframeOptions);

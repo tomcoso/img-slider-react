@@ -35,7 +35,7 @@ const Slider = ({ images, options }: SliderProps) => {
       nextRef.current.setAttribute(
         "style",
         `background-image : url(${
-          newIndex
+          newIndex !== undefined
             ? images[newIndex]
             : images[currentIndex < images.length - 1 ? currentIndex + 1 : 0]
         })`
@@ -46,7 +46,7 @@ const Slider = ({ images, options }: SliderProps) => {
       prevRef.current.setAttribute(
         "style",
         `background-image : url(${
-          newIndex
+          newIndex !== undefined
             ? images[newIndex]
             : images[currentIndex > 0 ? currentIndex - 1 : images.length - 1]
         })`
