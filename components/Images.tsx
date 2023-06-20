@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { useEffect } from "react";
-import { Context } from "../interfaces";
+import { useEffect, useRef } from "react";
+import { ImagesProps } from "../interfaces";
 import React from "react";
 
 const Panel = styled.div<{ image?: string }>`
@@ -52,7 +52,14 @@ const ImgWrap = styled.div`
   right: 100%;
 `;
 
-const Images = ({ imageArray, currentIndex, setIndex }: Context) => {
+const Images = ({
+  imageArray,
+  currentIndex,
+  setIndex,
+  anim,
+  prevRef,
+  nextRef,
+}: ImagesProps) => {
   let prevImage: string | undefined;
   let nextImage: string | undefined;
 
@@ -70,6 +77,7 @@ const Images = ({ imageArray, currentIndex, setIndex }: Context) => {
       return;
     }
     setIndex((x) => x + 1);
+    anim("forwards");
   };
 
   const slideBackwards = (): void => {
@@ -79,6 +87,7 @@ const Images = ({ imageArray, currentIndex, setIndex }: Context) => {
       return;
     }
     setIndex((x) => x - 1);
+    anim("backwards");
   };
 
   return (
@@ -87,6 +96,7 @@ const Images = ({ imageArray, currentIndex, setIndex }: Context) => {
         data-testid="prev-slide"
         image={prevImage}
         className="prev"
+        ref={prevRef}
       />
       <MainPanel role="img" image={imageArray[currentIndex]} className="main">
         <SlideBtn side="left" onClick={slideBackwards}></SlideBtn>
@@ -96,6 +106,7 @@ const Images = ({ imageArray, currentIndex, setIndex }: Context) => {
         data-testid="next-slide"
         image={nextImage}
         className="next"
+        ref={nextRef}
       />
     </ImgWrap>
   );

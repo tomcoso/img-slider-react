@@ -1,6 +1,7 @@
 import { Dispatch, useEffect, useState } from "react";
 import styled from "styled-components";
 import React from "react";
+import { IndexBtnsProps } from "../interfaces";
 
 const Wrap = styled.div`
   height: min-content;
@@ -27,13 +28,20 @@ const Btn = styled.div`
   border: 1px solid rgba(255, 255, 255, 0.5);
 `;
 
-interface IndexBtnsProps {
-  imageArray: string[];
-  currentIndex: number;
-  setIndex: Dispatch<React.SetStateAction<number>>;
-}
-
-const IndexBtns = ({ imageArray, currentIndex, setIndex }: IndexBtnsProps) => {
+const IndexBtns = ({
+  imageArray,
+  currentIndex,
+  setIndex,
+  anim,
+}: IndexBtnsProps) => {
+  const handleNewIndex = (newIndex: number) => {
+    setIndex(newIndex);
+    if (newIndex > currentIndex) {
+      anim("forwards");
+    } else if (newIndex < currentIndex) {
+      anim("backwards");
+    }
+  };
   return (
     <Wrap data-testid="indexes">
       {imageArray.map((x, i) => (
@@ -41,7 +49,7 @@ const IndexBtns = ({ imageArray, currentIndex, setIndex }: IndexBtnsProps) => {
           data-testid={"index-btn"}
           className={currentIndex === i ? "current" : ""}
           key={i * 1000 * Math.random()}
-          onClick={() => setIndex(i)}
+          onClick={() => handleNewIndex(i)}
         ></Btn>
       ))}
     </Wrap>

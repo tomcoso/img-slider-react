@@ -5,9 +5,19 @@ export interface SliderProps {
   options?: Object;
 }
 
-export interface Context {
+export interface ImagesProps {
   imageArray: string[];
   currentIndex: number;
   setIndex: Dispatch<React.SetStateAction<number>>;
   length?: number;
+  anim: (direction: "forwards" | "backwards") => void;
+  nextRef: React.MutableRefObject<HTMLDivElement | null>;
+  prevRef: React.MutableRefObject<HTMLDivElement | null>;
+}
+
+export interface IndexBtnsProps {
+  imageArray: string[];
+  currentIndex: number;
+  setIndex: Dispatch<React.SetStateAction<number>>;
+  anim: (direction: "forwards" | "backwards") => void;
 }
