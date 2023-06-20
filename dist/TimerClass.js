@@ -8,10 +8,10 @@ class Timer {
         this.callback = undefined;
     }
     reset() {
-        if (this.current !== null) {
-            clearTimeout(this.current);
-        }
         if (this.callback !== undefined) {
+            if (this.current !== null) {
+                clearTimeout(this.current);
+            }
             this.current = setTimeout(this.callback, this.time);
         }
         else {
@@ -20,7 +20,7 @@ class Timer {
     }
     set(callback) {
         this.callback = callback;
-        this.current = setTimeout(callback, this.time);
+        this.current = setTimeout(this.callback, this.time);
     }
 }
 exports.Timer = Timer;

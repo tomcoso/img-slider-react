@@ -63,6 +63,7 @@ const Images = ({ imageArray, currentIndex, setIndex, anim, prevRef, nextRef, ti
             setIndex((x) => x + 1);
         }
         anim("forwards");
+        console.log(currentIndex);
         timer.reset();
     };
     const slideBackwards = () => {

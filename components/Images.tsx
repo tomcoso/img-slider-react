@@ -73,6 +73,7 @@ const Images = ({
       setIndex((x) => x + 1);
     }
     anim("forwards");
+    console.log(currentIndex);
     timer.reset();
   };
 

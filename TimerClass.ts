@@ -10,10 +10,10 @@ export class Timer {
   }
 
   reset() {
-    if (this.current !== null) {
-      clearTimeout(this.current);
-    }
     if (this.callback !== undefined) {
+      if (this.current !== null) {
+        clearTimeout(this.current);
+      }
       this.current = setTimeout(this.callback, this.time);
     } else {
       throw new Error(
@@ -24,6 +24,6 @@ export class Timer {
 
   set(callback: () => void) {
     this.callback = callback;
-    this.current = setTimeout(callback, this.time);
+    this.current = setTimeout(this.callback, this.time);
   }
 }
