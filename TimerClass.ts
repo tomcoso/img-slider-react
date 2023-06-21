@@ -18,6 +18,5 @@ export class Timer {
       return;
     }
     this.current = setTimeout(callback, this.time);
-    console.log("add: " + this.current);
   }
 }
