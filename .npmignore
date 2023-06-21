@@ -1,8 +1,11 @@
 __tests__
-node_modules
-./components
+!dist/
+!dist/components/
+
+components/
 index.tsx
 interfaces.ts
 jest.config.ts
 TimerClass.ts
+
 styled-react-slider.gif
