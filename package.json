@@ -5,11 +5,10 @@
   },
   "name": "styled-img-slider",
   "version": "1.1.1",
-  "description": "React component image slider styled with styled-components",
+  "description": "Simple react image slider with timer and type declarations",
   "main": "/dist/index.js",
   "scripts": {
-    "test": "jest --verbose",
-    "publish:prepatch": "npm version prepatch && npm publish"
+    "test": "jest --verbose"
   },
   "repository": {
     "type": "git",
@@ -20,9 +19,14 @@
     "styled-components",
     "typed",
     "typescript",
-    "minimalistic"
+    "javascript",
+    "ts",
+    "minimalistic",
+    "image slider",
+    "img",
+    "slider"
   ],
-  "author": "tomcoso",
+  "author": "Tomas Dessy",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/tomcoso/img-slider-react/issues"

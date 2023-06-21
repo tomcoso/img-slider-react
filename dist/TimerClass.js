@@ -15,6 +15,7 @@ class Timer {
         if (this.current !== null) {
             return;
         }
+        this.current = setTimeout(callback, this.time);
         console.log("add: " + this.current);
     }
 }
