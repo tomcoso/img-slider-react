@@ -10,10 +10,12 @@ class Timer {
         if (this.current !== null) {
             clearTimeout(this.current);
         }
-        this.current = null;
     }
     set(callback) {
-        this.current = setTimeout(callback, this.time);
+        if (this.current !== null) {
+            return;
+        }
+        console.log("add: " + this.current);
     }
 }
 exports.Timer = Timer;
